@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GAME</title>
+	<style>
+		body{
+			background-color: lightgoldenrodyellow;
+		}
+
+		.container {
+			height: 500px;
+			width: 100%;
+			border: 1px solid green;
+			background-color: lightcyan;
+		}
+
+		#user_image,
+		#comp_image {
+			max-width: 100px;
+		}
+
+		input[type=submit] {
+			border: none;
+			color: white;
+			background-color: #33cc33;
+			display: inline-block;
+			box-sizing: border-box;
+			height: 60px;
+			width: 80px;
+			border-radius: 10px;
+			box-shadow: 4px 3px 3px 4px #e6e6e6;
+			font-size: 20px;
+		}
+
+		input[type=text] {
+			border: 3px solid lightblue;
+			color: black;
+			box-sizing: border-box;
+			padding: 12px 20px;
+			border-color: lightblue;
+			height: 40px;
+			width: 180px;
+			margin: 8px 0;
+			border-radius: 5px;
+			font-size: 16px;
+			outline: none;
+		}
+
+		.result {
+			margin-top: 10px;
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+	<br>
+	<script>
+		// store an images in a variable
+		// const rock = "<img style='max-width:100px;' src = 'C:/Users/91913/Desktop/django/Game/images/rock.png'> ";
+		// const paper = "<img style='max-width:100px;' src = 'C:/Users/91913/Desktop/django/Game/images/paper.png'> ";
+		// const scissor = "<img style='max-width:100px;' src = 'C:/Users/91913/Desktop/django/Game/images/scissors.png'>";
+		const win = "<img style='max-width:100px;' src = 'D:/Vishal Resume Projects/Game/images/win.png'>";
+		const lose = "<img style='max-width:300px;' src = 'D:/Vishal Resume Projects/Game/images/lose.png'>";
+		// algorithme to generathing images
+		// var image_array = ["rock", "paper", "scissor"];
+		// var random_index = Math.floor(Math.random() * image_array.length);
+		// var selected_image = image_array[random_index];	
+
+		function Play(){
+			var image_array = ["rock", "paper", "scissor"];
+			var random_index = Math.floor(Math.random() * image_array.length);
+			var selected_image = image_array[random_index];	
+
+			var user_score = 0;
+			var comp_score = 0;
+
+			for (var i = 0; i <= 2; i++){
+				var user_choice = document.getElementById('user').value;
+
+				if (user_choice == selected_image){
+					document.getElementById('user-image').innerHTML = user_choice;
+					document.getElementById('comp-image').innerHTML = selected_image;
+					document.getElementById('result').innerHTML = "Tie !"
+
+				}
+
+				// reverse order logic
+				
+				else if(user_choice == "rock"){
+					if(selected_image == "paper"){
+						document.getElementById('user-image').innerHTML = user_choice;
+						document.getElementById('comp-image').innerHTML = selected_image;
+						document.getElementById('result').innerHTML = lose; 				
+						// document.getElementById('user_score').innerHTML =  user_score++;
+						
+					}
+					else{
+						document.getElementById('user-image').innerHTML = user_choice;
+						document.getElementById('comp-image').innerHTML = selected_image;
+						document.getElementById('result').innerHTML = win;
+						// document.getElementById('comp_score').innerHTML = comp_score ++;
+					}
+
+				}
+		
+
+				else if(user_choice == "paper"){
+					if(selected_image == "scissor"){
+						document.getElementById('user-image').innerHTML = user_choice;
+						document.getElementById('comp-image').innerHTML = selected_image;
+						document.getElementById('result').innerHTML = lose;											
+						// document.getElementById('user_score').innerHTML =  user_score++;
+						
+					}
+					else{
+						document.getElementById('user-image').innerHTML = user_choice;
+						document.getElementById('comp-image').innerHTML = selected_image;
+						document.getElementById('result').innerHTML = win;
+						// document.getElementById('comp_score').innerHTML = comp_score ++;
+					}
+				}
+
+				else if(user_choice == "scissor"){
+					if(selected_image == "rock"){
+						document.getElementById('user-image').innerHTML = user_choice;
+						document.getElementById('comp-image').innerHTML = selected_image;
+						document.getElementById('result').innerHTML = lose;					
+						// document.getElementById('user_score').innerHTML =  user_score++;
+					}
+					else{
+						document.getElementById('user-image').innerHTML = user_choice;
+						document.getElementById('comp-image').innerHTML = selected_image;
+						document.getElementById('result').innerHTML = win;
+						// document.getElementById('comp_score').innerHTML = comp_score ++;
+					}
+				}
+
+
+				else{
+					window.alert("Enter Your choice\nInvalid Input !");
+
+				}
+
+
+			}
+
+		}
+
+
+
+	</script>
+
+	<table align="center" class="container" cellspacing="0">
+
+		<tr>
+			<th id="col-one" rowspan="1">Player</th>
+			<th id="col-one" rowspan="1">AI</th>
+		</tr>
+
+
+		<tr>
+			<th id="user_score" rowspan="1">Points<br>( )</th>
+			<th id="comp_score" rowspan="1">Points<br>( )</th>
+
+		</tr>
+
+
+		<tr>
+			<th id="col-three" colspan="4">
+
+				<input type="text" name="user" id="user" placeholder="rock, paper, scissor">
+
+				<input type="submit" value="Play" onclick="Play()">
+				
+
+			</th>
+		</tr>
+
+
+		<tr>
+			<th id="user-image" rowspan="4">?</th>
+			<th id="comp-image" rowspan="4">?</th>
+		</tr>
+	</table>
+	<center>
+	<div>
+		<h1 id="result">
+		</h1>
+	</div>
+	</center>
+
+
+
+
+</body>
+
+</html>
